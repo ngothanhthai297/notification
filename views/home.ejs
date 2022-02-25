@@ -12,17 +12,22 @@
 
 <body>
     <h1>Hello</h1>
-    <form action="" method="get">
-        <label for="">Title <input type="text" name="title" id="title"></label><br>
-        <label for="">Content <input type="text" name="title" id="title"></label><br>
-        <label for="">Image <input type="text" name="title" id="title"></label><br>
-        <label for="">Type <input type="text" name="title" id="title"></label>
-        <br><input type="submit" value="Submit">
+    <form action="http://localhost:4000/chat" method="GET">
+        <label for="">Title <input type="text" id="title"></label><br>
+        <label for="">Content <input type="text" id="content"></label><br>
+        <label for="">Images <input type="text" id="images"></label><br>
+        <label for="">Type <input type="text"  id="type"></label>
+        <br><input type="button" value="Submit" onclick="sendMessage()">
     </form>
     <script>
         var socket = io("http://localhost:4000")
         function sendMessage() {
-            socket.emit("messageSent")
+            socket.emit("messageSent", {
+                "title" : document.getElementById('title').value,
+                "content" : document.getElementById('content').value,
+                "images" : document.getElementById('images').value,
+                "type" : document.getElementById('type').value,
+            })
         }
     </script>
 </body>

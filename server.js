@@ -20,7 +20,9 @@ const server = app.listen(process.env.PORT , () => console.log('Running'))
 var io = require("socket.io")(server)
 io.on("connection",function (socket) {
     console.log("Co ket noi: "+ socket.id)
-    socket.on("disconnect",function(){
-        console.log("Id: " +socket.id + "Da ngat ket noi")
+    socket.on("messageSent",function(message){
+        // console.log("Id: " +socket.id + "Da ngat ket noi")
+        // socket.broadcast.emit("messageSent",message)
+        socket.broadcast.emit("messageSent", message);
     })
 })
