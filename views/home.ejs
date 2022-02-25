@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="socket.io/socket.io.js"></script>
+   
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <form action="" method="get">
+        <label for="">Title <input type="text" name="title" id="title"></label><br>
+        <label for="">Content <input type="text" name="title" id="title"></label><br>
+        <label for="">Image <input type="text" name="title" id="title"></label><br>
+        <label for="">Type <input type="text" name="title" id="title"></label>
+        <br><input type="submit" value="Submit">
+    </form>
+    <script>
+        var socket = io("http://localhost:4000")
+        function sendMessage() {
+            socket.emit("messageSent")
+        }
+    </script>
+</body>
+
+</html>
